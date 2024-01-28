@@ -23,7 +23,7 @@ int others = 0;
     expp++;
     printf("Token: exponential, Value: %s\n", yytext);
 }
-[+-]?[0-9]+[iIjJ] { 
+[+-]?[0-9]*+[+-]?[1-9]+[iIjJ] { 
   complex++;
   printf("Token: complex number, Value: %s\n", yytext);
 }
