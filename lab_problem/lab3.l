@@ -9,8 +9,7 @@ int comments = 0;
 %option noyywrap
 
 %%
-
-"/*"([^*]|[*]+[^*/])*[*]+"/" {
+"/""*"(.|\n)*"*""/" {
   // Multi-line comment
   printf("Token: Multi-line comment, Value: %s\n", yytext);
   comments++;
