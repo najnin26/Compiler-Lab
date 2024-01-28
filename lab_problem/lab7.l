@@ -1,16 +1,21 @@
 %{
 #include <stdio.h>
 int v = 0;
+int other=0;
 %}
 %option noyywrap
 %%
-"am"|"Am"|"is"|"Is"|"are"|"Are"|"was"|"Was"|"were"|"Were"|"be"|"Be"|"being"|"Being"|"been"|"Been" {
-    printf("Found 'to be' verb: %s\n", yytext);
-    v++;
-}
-. ; // Ignore other characters
-\n ; // Ignore newline characters
 
+"Am"|"Is"|"Are"|"Was"|"Were"|"Have"|"Has"|"Had" {
+v++;
+printf("Found 'to be' verb: %s\n", yytext);
+}
+[" "]"am"|"is"|"are"|"was"|"were"|"have"|"has"|"had" {
+v++;
+printf("Found 'to be' verb: %s\n", yytext);
+}
+
+. {other++;}
 %%
 
 int main() {
